@@ -7,7 +7,7 @@ async function submit(){
             if(res.status)
             {
                 setUserSigned(res.token)
-                redirect('dashboard')
+                redirect(res.redirect)
             }else{
                 _notif('#alert-message','danger',res.message)
             }

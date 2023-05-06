@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\IsGuest;
+use App\Http\Middleware\IsKasir;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AuthController::class,'login'])->name('login');
+Route::middleware(IsGuest::class)->group(function () {
+
+    Route::get('/', [AuthController::class,'login'])->name('login');
+
+});
+
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(IsAdmin::class)->prefix('admin')->name('admin.')->group(function () {
+    
+    Route::redirect('admin','admin/dashboard',302)->name('admin.index');
+
+    Route::resource('dashboard', Admin\DashboardController::class)->only('index');
+        
+});
+Route::middleware(IsKasir::class)->prefix('kasir')->name('kasir.')->group(function () {
+    
+    Route::redirect('kasir','kasir/dashboard',302)->name('kasir.index');
+
+    Route::resource('dashboard', Kasir\DashboardController::class)->only('index');
+        
+});

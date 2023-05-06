@@ -21,13 +21,15 @@ class UserSeeder extends Seeder
                 'name' => "Admin",
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin'),
-                'status' => 1
+                'status' => 1,
+                'role' => 1
             ],
             [
                 'name' => "Kasir",
                 'email' => 'kasir@gmail.com',
                 'password' => Hash::make('kasir'),
-                'status' => 1
+                'status' => 1,
+                'role' => 2
             ],
         ]);
     }
