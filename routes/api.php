@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Middleware\IsAdminApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login',[AuthController::class,'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function() {
+    
+    Route::middleware(IsAdminApi::class)->prefix('admin')->group(function(){
+        
+        Route::resource('category',Admin\CategoryController::class);
+        Route::resource('product',Admin\ProductController::class);
+        Route::resource('transaction',Admin\TransactionController::class);
+
+    });
+    
 });

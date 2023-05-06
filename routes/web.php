@@ -31,12 +31,21 @@ Route::middleware(IsAdmin::class)->prefix('admin')->name('admin.')->group(functi
     Route::redirect('admin','admin/dashboard',302)->name('admin.index');
 
     Route::resource('dashboard', Admin\DashboardController::class)->only('index');
+
+    Route::resource('category', Admin\CategoryController::class);
+
+    Route::resource('product', Admin\ProductController::class);
+
+    Route::resource('transaction', Admin\TransactionController::class);
         
 });
+
 Route::middleware(IsKasir::class)->prefix('kasir')->name('kasir.')->group(function () {
     
     Route::redirect('kasir','kasir/dashboard',302)->name('kasir.index');
 
     Route::resource('dashboard', Kasir\DashboardController::class)->only('index');
+
+    Route::resource('transaction', Kasir\TransactionController::class);
         
 });
