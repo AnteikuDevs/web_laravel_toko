@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Kasir;
+namespace App\Http\Controllers\Api\Kasir;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('kasir.transaction.index');
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('kasir.transaction.create');
+        //
     }
 
     /**
@@ -45,9 +45,9 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
-        return view('admin.transaction.show',compact('transaction'));
+        //
     }
 
     /**
@@ -82,5 +82,22 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function list()
+    {
+        $data = Product::where('stock','>',0)->get();
+        if(count($data))
+        {
+            return response([
+                'status' => true,
+                'data' => $data
+            ]);
+        }
+
+        return response([
+            'status' => false,
+            'message' => 'Data tidak ditemukan'
+        ]);
     }
 }

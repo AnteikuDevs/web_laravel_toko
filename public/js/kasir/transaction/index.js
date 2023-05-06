@@ -2,7 +2,7 @@
 FetchDataTable({
     selector: '#dt-content',
     ajax: {
-        url: 'admin/transaction'
+        url: 'kasir/transaction'
     },
     columns: [
         {
@@ -26,6 +26,7 @@ FetchDataTable({
         {
             data: null,
             render: function(val){
+
                 return `<a href="${url('admin/transaction/'+val.id)}" class="btn btn-primary btn-sm"><i class="ri-information-fill
                 "></i></a>`
             }
