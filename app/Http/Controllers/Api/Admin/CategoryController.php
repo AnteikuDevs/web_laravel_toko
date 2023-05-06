@@ -25,8 +25,7 @@ class CategoryController extends Controller
         if(!empty($search))
         {
             $dataCategory = $dataCategory->where(function($query) use ($search){
-                $query->where('name','like',"%$search%")
-                ->orWhere('position','like',"%$search%");
+                $query->where('name','like',"%$search%");
             });
         }
 
@@ -164,6 +163,43 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataCategory = Category::find($id);
+        if(!$dataCategory)
+        {
+            return response([
+                'status' => false,
+                'message' => "Data tidak ditemukan"
+            ]);
+        }
+
+        try {
+            $dataCategory->delete();
+            return response([
+                'status' => true,
+                'message' => "Berhasil menghapus data"
+            ]);
+        } catch (\Throwable $th) {
+            return response([
+                'status' => true,
+                'message' => "Data tidak dapat dihapus"
+            ]);
+        }
+    }
+
+    public function list()
+    {
+        $data = Category::all();
+        if(count($data))
+        {
+            return response([
+                'status' => true,
+                'data' => $data
+            ]);
+        }
+
+        return response([
+            'status' => false,
+            'message' => 'Data tidak ditemukan'
+        ]);
     }
 }

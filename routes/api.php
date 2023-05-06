@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function() {
     
     Route::middleware(IsAdminApi::class)->prefix('admin')->group(function(){
         
+        Route::get('category/list',[Admin\CategoryController::class,'list']);
         Route::resource('category',Admin\CategoryController::class);
         Route::resource('product',Admin\ProductController::class);
         Route::resource('transaction',Admin\TransactionController::class);

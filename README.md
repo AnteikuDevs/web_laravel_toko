@@ -28,11 +28,16 @@ _This is how to install and use this project._
    ```sh
    php artisan migrate --seed
    ```
-8. Selanjutnya jalankan command berikut
+8. Setelah itu jalankan command
+   ```sh
+   php artisan storage:link
+   ```
+9. Selanjutnya jalankan command berikut
 
    ```sh
    php artisan serve
    ```
+10. Lalu buka url tersebut di browser (Contoh: http://localhost:8000)
 
 ## Access App
 
