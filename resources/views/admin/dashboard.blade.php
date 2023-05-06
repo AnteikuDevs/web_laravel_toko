@@ -14,7 +14,7 @@
                             <i class="bi bi-cart"></i>
                         </div>
                         <div class="ps-3">
-                            <h6>145</h6>
+                            <h6>{{ $product }}</h6>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             <i class="bi bi-currency-dollar"></i>
                         </div>
                         <div class="ps-3">
-                            <h6>Rp. 140.000</h6>
+                            <h6>Rp. {{ number_format($transaction,0,',','.') }}</h6>
                         </div>
                     </div>
                 </div>

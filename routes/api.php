@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function() {
         
         Route::get('category/list',[Admin\CategoryController::class,'list']);
         Route::resource('category',Admin\CategoryController::class);
+        Route::get('product/list',[Admin\ProductController::class,'list']);
         Route::resource('product',Admin\ProductController::class);
         Route::resource('transaction',Admin\TransactionController::class);
 

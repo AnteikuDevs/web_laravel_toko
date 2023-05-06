@@ -240,4 +240,21 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    public function list()
+    {
+        $data = Product::where('stock','>',0)->get();
+        if(count($data))
+        {
+            return response([
+                'status' => true,
+                'data' => $data
+            ]);
+        }
+
+        return response([
+            'status' => false,
+            'message' => 'Data tidak ditemukan'
+        ]);
+    }
 }
