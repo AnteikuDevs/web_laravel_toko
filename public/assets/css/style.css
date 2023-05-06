@@ -277,6 +277,106 @@ h6 {
   font-size: 20px;
 }
 
+
+
+.alert {
+  display: flex;
+  padding: 0;
+}
+.alert .close:focus, .alert .close:hover {
+  opacity: 1;
+}
+.alert .alert-icon {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+}
+.alert .alert-message {
+  box-sizing: border-box;
+  padding: 0.95rem;
+  width: 100%;
+}
+.alert.alert-outline, .alert.alert-outline-coloured {
+  background: #fff;
+  color: #495057;
+}
+.alert.alert-outline hr, .alert.alert-outline-coloured hr {
+  border-top-color: #ced4da;
+}
+.alert.alert-outline .close:focus,
+.alert.alert-outline .close:hover, .alert.alert-outline-coloured .close:focus,
+.alert.alert-outline-coloured .close:hover {
+  color: #343a40;
+}
+.alert.alert-outline .alert-message, .alert.alert-outline-coloured .alert-message {
+  border: 1px solid #ced4da;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0.2rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.2rem;
+}
+.alert.alert-outline .alert-message:not(:nth-child(2)), .alert.alert-outline-coloured .alert-message:not(:nth-child(2)) {
+  border-bottom-left-radius: 0;
+  border-left: 0;
+  border-top-left-radius: 0;
+}
+.alert.alert-outline .alert-icon, .alert.alert-outline-coloured .alert-icon {
+  border-bottom-left-radius: 0.2rem;
+  border-top-left-radius: 0.2rem;
+  color: #fff;
+}
+.alert.alert-outline.alert-primary .alert-icon, .alert.alert-outline-coloured.alert-primary .alert-icon {
+  background-color: RGBA(36, 71, 249);
+}
+.alert.alert-outline.alert-primary .alert-message, .alert.alert-outline-coloured.alert-primary .alert-message {
+  border-color: RGBA(36, 71, 249);
+}
+.alert.alert-outline.alert-secondary .alert-icon, .alert.alert-outline-coloured.alert-secondary .alert-icon {
+  background-color: RGBA(108, 117, 125);
+}
+.alert.alert-outline.alert-secondary .alert-message, .alert.alert-outline-coloured.alert-secondary .alert-message {
+  border-color: RGBA(108, 117, 125);
+}
+.alert.alert-outline.alert-success .alert-icon, .alert.alert-outline-coloured.alert-success .alert-icon {
+  background-color: RGBA(3, 172, 14);
+}
+.alert.alert-outline.alert-success .alert-message, .alert.alert-outline-coloured.alert-success .alert-message {
+  border-color: RGBA(3, 172, 14);
+}
+.alert.alert-outline.alert-info .alert-icon, .alert.alert-outline-coloured.alert-info .alert-icon {
+  background-color: RGBA(13, 202, 240);
+}
+.alert.alert-outline.alert-info .alert-message, .alert.alert-outline-coloured.alert-info .alert-message {
+  border-color: RGBA(13, 202, 240);
+}
+.alert.alert-outline.alert-warning .alert-icon, .alert.alert-outline-coloured.alert-warning .alert-icon {
+  background-color: RGBA(255, 212, 36);
+}
+.alert.alert-outline.alert-warning .alert-message, .alert.alert-outline-coloured.alert-warning .alert-message {
+  border-color: RGBA(255, 212, 36);
+}
+.alert.alert-outline.alert-danger .alert-icon, .alert.alert-outline-coloured.alert-danger .alert-icon {
+  background-color: RGBA(220, 53, 69);
+}
+.alert.alert-outline.alert-danger .alert-message, .alert.alert-outline-coloured.alert-danger .alert-message {
+  border-color: RGBA(220, 53, 69);
+}
+.alert.alert-outline.alert-light .alert-icon, .alert.alert-outline-coloured.alert-light .alert-icon {
+  background-color: RGBA(248, 249, 250);
+}
+.alert.alert-outline.alert-light .alert-message, .alert.alert-outline-coloured.alert-light .alert-message {
+  border-color: RGBA(248, 249, 250);
+}
+.alert.alert-outline.alert-dark .alert-icon, .alert.alert-outline-coloured.alert-dark .alert-icon {
+  background-color: RGBA(33, 37, 41);
+}
+.alert.alert-outline.alert-dark .alert-message, .alert.alert-outline-coloured.alert-dark .alert-message {
+  border-color: RGBA(33, 37, 41);
+}
+
 /* Close Button */
 .btn-close {
   background-size: 25%;
@@ -1257,4 +1357,16 @@ h6 {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+.error-message-input {
+  display: block;
+  color: var(--bs-danger);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.error-message-input span {
+  display: block;
+  margin-top: 5px;
 }

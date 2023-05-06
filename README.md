@@ -41,9 +41,9 @@ Admin Toko:
 email: admin@gmail.com
 password: admin
 
-Customer:
-email: customer@gmail.com
-password: customer@gmail.com
+Kasir:
+email: kasir@gmail.com
+password: kasir
 ```
 
 <!-- CONTACT -->

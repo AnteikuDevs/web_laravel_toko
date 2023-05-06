@@ -19,7 +19,9 @@
                             <h5 class="card-title text-center pb-0 fs-4">Masuk</h5>
                         </div>
 
-                        <form class="row g-3 needs-validation" novalidate>
+                        <div id="alert-message"></div>
+
+                        <form class="row g-3" id="login-form">
 
                             <div class="col-12">
                                 <label for="input-email" class="form-label">Email</label>
@@ -54,3 +56,6 @@
 
 </section>
 @endsection
+@push('script')
+<script src="{{ asset('js/login.js') }}"></script>
+@endpush

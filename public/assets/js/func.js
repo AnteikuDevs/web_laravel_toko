@@ -3,10 +3,6 @@
     
 let __advanced = window.ENV
 
-function secretStorage() {
-    return atob(__advanced.SECRET_STORAGE)
-}
-
 // url
 function url(endpoint = '') {
 
@@ -179,6 +175,10 @@ function remove_session(key) {
 }
 // end sessionStorage
 
+function setUserSigned(value) {
+    return set_cookie('uid', value)
+}
+
 function log(...arguments) {
     console.log('%clog:',`padding: 2px 5px;
     border-radius: 4px;
@@ -212,10 +212,10 @@ let HttpHeaders = {
     'Content-Type': 'application/json',
 }
 
-if (get_cookie(secretStorage())) {
+if (get_cookie('uid')) {
     HttpHeaders = {
         ...HttpHeaders,
-        'Authorization': "Bearer " + atob(get_cookie(secretStorage()))
+        'Authorization': "Bearer " + get_cookie('uid')
     }
 }
 let Http = new class {
@@ -446,7 +446,7 @@ let MyNotif = new class {
         this.run()
     }
     run() {
-        let key = get_session(__advanced.SECRET_NOTIF);
+        let key = get_session('my-notif-id');
         if (key) {
             let data = atob(get_session(key));
             if (data) {
@@ -487,8 +487,8 @@ let MyNotif = new class {
                             }, 1000)
                         }
                         remove_session([
-                            __advanced.SECRET_NOTIF,
-                            get_session(__advanced.SECRET_NOTIF)
+                            'my-notif-id',
+                            get_session('my-notif-id')
                         ])
                         return true;
                     }
@@ -508,8 +508,8 @@ let MyNotif = new class {
                             }, 1000)
                         }
                         remove_session([
-                            __advanced.SECRET_NOTIF,
-                            get_session(__advanced.SECRET_NOTIF)
+                            'my-notif-id',
+                            get_session('my-notif-id')
                         ])
                         return true;
                     }
@@ -531,7 +531,7 @@ let MyNotif = new class {
         }
         let rand = randId(7);
         if (p) {
-            set_session(__advanced.SECRET_NOTIF, rand)
+            set_session('my-notif-id', rand)
             set_session(rand, btoa(JSON.stringify(cnf)))
             return true;
         }
@@ -572,7 +572,7 @@ function errorReset(parentSelector) {
 }
 
 function logout() {
-    remove_cookie(atob(__advanced.SECRET_STORAGE))
+    remove_cookie('uid')
     redirect('')
 }
 
@@ -659,46 +659,6 @@ function resetForm(selector){
             _this.val('')
         }
     });
-}
-
-window.onload = function(){
-    $('.select2').select2()
-}
-
-class MyCountdown {
-    constructor(config)
-    {
-        this.config = config
-        this.render()
-    }
-    render()
-    {
-        let config = this.config
-        let countDownDate = new Date(config.end_date).getTime()
-        
-        var x = setInterval(function() {
-
-            var now = new Date().getTime();
-            
-            var distance = countDownDate - now;
-        
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-            $(config.element).html(days + " Hari " + hours + " Jam " + minutes + " Menit " + (config.with_second? seconds + " Detik" : ""));
-        
-            if (distance < 0) {
-                clearInterval(x);
-                if(typeof config.callback == 'function')
-                {
-                    config.callback()
-                }
-                // $(config.element).html("Waktu Telah Berakhir");
-            }
-        }, 1000);
-    }
 }
 
 function reload(){
