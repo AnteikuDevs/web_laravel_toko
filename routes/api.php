@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Http\Controllers\Api;
+
+use App\Http\Middleware\IsAdminApi;
+use App\Http\Middleware\IsKasirApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login',[AuthController::class,'login']);
+
+Route::middleware('auth:sanctum')->group(function() {
+    
+    Route::middleware(IsAdminApi::class)->prefix('admin')->group(function(){
+        
+        Route::get('category/list',[Admin\CategoryController::class,'list']);
+        Route::resource('category',Admin\CategoryController::class);
+        Route::get('product/list',[Admin\ProductController::class,'list']);
+        Route::resource('product',Admin\ProductController::class);
+        Route::resource('transaction',Admin\TransactionController::class);
+        
+    });
+    
+    Route::middleware(IsKasirApi::class)->prefix('kasir')->group(function(){
+        
+        Route::get('product/list',[Kasir\ProductController::class,'list']);
+        Route::resource('transaction',Kasir\TransactionController::class);
+
+    });
+    
 });
