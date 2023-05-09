@@ -244,14 +244,14 @@ async function addSubmit() {
 
     errorReset('#transaction-add')
     
-    let response = await Http.post('admin/transaction',data)
+    let response = await Http.post('admin/admin-transaction',data)
     if(response.errors){
         errorShows('#transaction-add',response.errors)
     }else{
         if(response.status)
         {
             // reset form
-            redirect('admin/transaction')
+            redirect('admin/admin-transaction')
             
         }else{
             _notif('#modalAdd .alert-message','danger',response.message)

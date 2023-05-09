@@ -2,7 +2,7 @@
 FetchDataTable({
     selector: '#dt-content',
     ajax: {
-        url: 'admin/transaction'
+        url: 'admin/admin-transaction'
     },
     columns: [
         {
