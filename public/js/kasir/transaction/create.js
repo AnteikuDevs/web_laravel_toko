@@ -244,7 +244,7 @@ async function addSubmit() {
 
     errorReset('#transaction-add')
     
-    let response = await Http.post('kasir/transaction',data)
+    let response = await Http.post('kasir/admin-transaction',data)
     if(response.errors){
         errorShows('#transaction-add',response.errors)
     }else{

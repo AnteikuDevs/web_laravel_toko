@@ -28,14 +28,14 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::resource('category',Admin\CategoryController::class);
         Route::get('product/list',[Admin\ProductController::class,'list']);
         Route::resource('product',Admin\ProductController::class);
-        Route::resource('transaction',Admin\TransactionController::class);
+        Route::resource('admin-transaction',Admin\TransactionController::class);
         
     });
     
     Route::middleware(IsKasirApi::class)->prefix('kasir')->group(function(){
         
         Route::get('product/list',[Kasir\ProductController::class,'list']);
-        Route::resource('transaction',Kasir\TransactionController::class);
+        Route::resource('kasir-transaction',Kasir\TransactionController::class);
 
     });
     
