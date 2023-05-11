@@ -31,8 +31,8 @@
 
   <script>
     window.ENV = {
-        URL: "{{ env('APP_URL') }}",
-        API_URL: "{{ env('API_URL') }}"
+        URL: "{{ url('') }}",
+        API_URL: "{{ url('api') }}"
     }
   </script>
 
